@@ -224,6 +224,7 @@ const CareerAndLifeStyle = makeStyles(theme => ({
     },
     formElement: {
         display: "block",
+        width: "100%"
     },
     formElemetText: {
         fontWeight: "bold !important",
