@@ -29,6 +29,16 @@ const AppContentStyle = makeStyles(theme => ({
         left: "50%",
         transform: "translate(-50%, -50%)",
     },
+    mainText2: {
+        position: "absolute",
+        top: "10%",
+        left: "20%",
+        right: "20%",
+        textAlign: "center",
+        [theme.breakpoints.only('xs')]: {
+            top: "5%",
+        },
+    },
     mainTextStyle: {
         fontSize: "100px !important",
         color: DefaultTheme.palette.secondary.contrastText,
@@ -41,6 +51,20 @@ const AppContentStyle = makeStyles(theme => ({
         },
         [theme.breakpoints.only('xs')]: {
             fontSize: "25px !important",
+        },
+    },
+    mainTextStyle2: {
+        fontSize: "50px !important",
+        color: DefaultTheme.palette.secondary.contrastText,
+        fontWeight: "bold !important",
+        [theme.breakpoints.down('md')]: {
+            fontSize: "40px !important",
+        },
+        [theme.breakpoints.down('sm')]: {
+            fontSize: "30px !important",
+        },
+        [theme.breakpoints.only('xs')]: {
+            fontSize: "18px !important",
         },
     },
     mediaIcons: {
@@ -181,6 +205,7 @@ const AppContentStyle = makeStyles(theme => ({
         margin: "auto",
         paddingTop: "20px",
         paddingBottom: "20px",
+        display: "none",
         [theme.breakpoints.down('sm')]: {
             width: "90%",
         },
@@ -415,12 +440,14 @@ const AppContentStyle = makeStyles(theme => ({
         backgroundColor: DefaultTheme.palette.primary.main,
         display: "flex",
         justifyContent: "center",
+/*
         background: "linear-gradient(to bottom, " + DefaultTheme.palette.primary.main + " 50%," + DefaultTheme.palette.secondary.contrastText + " 50%)",
+*/
     },
     sectionFiveGrid: {
         paddingTop: "100px",
         paddingBottom: "100px",
-        width: "90% !important",
+        width: "70% !important",
         [theme.breakpoints.down('sm')]: {
             width: "100% !important",
         },
@@ -480,8 +507,9 @@ const AppContentStyle = makeStyles(theme => ({
     },
     sectionFiveButtons: {
         position: "absolute !important",
-        top: "80% !important",
-        left: "40% !important",
+        top: "90% !important",
+        left: "20% !important",
+        right: "20% !important",
     },
     sectionFiveButtons2: {
         position: "absolute !important",
@@ -490,6 +518,19 @@ const AppContentStyle = makeStyles(theme => ({
     },
     sectionFiveButtonText: {
         color: DefaultTheme.palette.secondary.contrastText,
+        fontSize: "20px !important",
+        fontWeight: "bolder !important",
+        [theme.breakpoints.only('md')]: {
+            fontSize: "15px !important",
+        },
+        [theme.breakpoints.only('sm')]: {
+            fontSize: "12px !important",
+        },
+        [theme.breakpoints.only('xs')]: {
+            fontSize: "13px !important",
+        },
+    },
+    sectionFiveButtonText2: {
         fontSize: "20px !important",
         fontWeight: "bolder !important",
         [theme.breakpoints.only('md')]: {
@@ -548,6 +589,20 @@ const AppContentStyle = makeStyles(theme => ({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    orduluText:{
+        color: DefaultTheme.palette.secondary.contrastText,
+        fontSize: "20px !important",
+        fontWeight: "bolder !important",
+        [theme.breakpoints.only('md')]: {
+            fontSize: "15px !important",
+        },
+        [theme.breakpoints.only('sm')]: {
+            fontSize: "12px !important",
+        },
+        [theme.breakpoints.only('xs')]: {
+            fontSize: "13px !important",
+        },
+    }
 }));
 
 export default AppContentStyle;

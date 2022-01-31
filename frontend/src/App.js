@@ -12,6 +12,7 @@ import Contracts from "./Components/Contracts";
 import Products from "./Components/Products";
 import Jobs from "./Components/Jobs";
 import About from "./Components/About";
+import ScrollButton from "./Components/ScrollButton";
 
 const theme = DefaultTheme;
 
@@ -31,6 +32,7 @@ function App() {
                     <Route path='/about' element={<About/>}/>
                 </Routes>
             </Router>
+            <ScrollButton/>
             <AppFooter/>
         </ThemeProvider>
     );

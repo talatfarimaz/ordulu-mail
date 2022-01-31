@@ -62,7 +62,10 @@ public class MailController {
     public String sendJobApplicationMail(@RequestParam MultipartFile file,
                                        @RequestParam String name,
                                        @RequestParam String surname,
-                                       @RequestParam String identity, @RequestParam String email, @RequestParam String phone
+                                       @RequestParam String identity,
+                                         @RequestParam String email,
+                                         @RequestParam String phone,
+                                         @RequestParam String job
     ) {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         String host = "mail.ordulu.com";
@@ -76,10 +79,11 @@ public class MailController {
         props.put("mail.smtp.timeout", 1000);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.transport.protocol", "smtp");
-        String content = "<div><strong>İş Başvurusu</strong>" +
-                "<label>Kimden: " + name+ " "+ surname+"</label>" +
-                "<label>TC Kimlik No: " +identity+"</label>" +
-                "<label>Mail: " +email+"</label>" +
+        String content = "<div><strong>İş Başvurusu</strong><br/>" +
+                "<label>İlan: " + job+ " "+ "</label><br/>" +
+                "<label>Kimden: " + name+ " "+ surname+"</label><br/>" +
+                "<label>TC Kimlik No: " +identity+"</label><br/>" +
+                "<label>Mail: " +email+"</label><br/>" +
                 "<label>Telefon: " +phone+"</label>" +
                 "</div>";
         MimeBodyPart attachPart = new MimeBodyPart();
@@ -133,11 +137,11 @@ public class MailController {
         props.put("mail.smtp.timeout", 1000);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.transport.protocol", "smtp");
-        String content = "<div><strong>Staj Başvurusu</strong>" +
-                "<label>Kimden: " + name+ " "+ surname+"</label>" +
-                "<label>TC Kimlik No: " +identity+"</label>" +
-                "<label>Mail: " +email+"</label>" +
-                "<label>Telefon: " +phone+"</label>" +
+        String content = "<div><strong>Staj Başvurusu</strong><br/>" +
+                "<label>Kimden: " + name+ " "+ surname+"</label><br/>" +
+                "<label>TC Kimlik No: " +identity+"</label><br/>" +
+                "<label>Mail: " +email+"</label><br/>" +
+                "<label>Telefon: " +phone+"</label><br/>" +
                 "</div>";
         MimeBodyPart attachPart = new MimeBodyPart();
         try {

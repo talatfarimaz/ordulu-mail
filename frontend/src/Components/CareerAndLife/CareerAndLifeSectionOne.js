@@ -18,7 +18,7 @@ function CareerAndLifeSectionOne() {
             <div className={classes.mainText}>
                 <Typography className={classes.careerAndLifeText}>{t('CareerAndLife')}</Typography>
             </div>
-            <div className={classes.imgDiv2}>
+           {/* <div className={classes.imgDiv2}>
                 <Grid container>
                     <Grid item md={3} sm={2} xs={12}/>
                     <Grid item md={6} sm={8} xs={12} style={{textAlign: "center"}}>
@@ -28,7 +28,7 @@ function CareerAndLifeSectionOne() {
                     </Grid>
                     <Grid item md={3} sm={2} xs={12}/>
                 </Grid>
-            </div>
+            </div>*/}
         </div>
     )
 }

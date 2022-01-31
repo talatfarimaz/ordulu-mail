@@ -13,8 +13,8 @@ function CareerAndLife() {
             <CareerAndLifeSectionOne/>
             <CareerAndLifeSectionTwo/>
             <CareerAndLifeSectionThree/>
-            <CareerAndLifeSectionFour/>
-            <CareerAndLifeSectionFive/>
+           {/* <CareerAndLifeSectionFour/>
+            <CareerAndLifeSectionFive/>*/}
         </div>
     );
 }

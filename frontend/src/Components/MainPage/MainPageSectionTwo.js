@@ -76,7 +76,7 @@ function MainPageSectionTwo() {
                     <Typography className={classes.orduluInfo}>
                         {t('OrduluInfo')}
                     </Typography>
-                    <Button color={"secondary"} variant={"contained"} className={classes.alignRight} href={"/careerandlife"}
+                    <Button color={"secondary"} variant={"contained"} className={classes.alignRight} href={"/blog"}
                             endIcon={<ArrowForwardIosIcon/>}>
                         <Typography>
                             {t('InspectALl')}

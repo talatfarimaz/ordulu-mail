@@ -223,6 +223,7 @@ function Jobs() {
                                 formData.append("identity", identity);
                                 formData.append("email", email);
                                 formData.append("phone", phone);
+                                formData.append("job",t(job.job))
                                 axios({
                                     method: "post",
                                     url: "/mail/sendjobappmail",

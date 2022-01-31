@@ -69,6 +69,18 @@ function AboutSectionTwo() {
                             <Typography className={classes.answer2}>
                                 {t('ManagerText')}
                             </Typography>
+                            <Typography className={classes.answer2}>
+                                {t('ManagerText2')}
+                            </Typography>
+                            <Typography className={classes.answer2}>
+                                {t('ManagerText3')}
+                            </Typography>
+                            <Typography className={classes.answer2}>
+                                {t('ManagerText4')}
+                            </Typography>
+                            <Typography className={classes.answer2}>
+                                {t('ManagerText5')}
+                            </Typography>
                         </Grid>
                     </Grid>
                 </Grid>

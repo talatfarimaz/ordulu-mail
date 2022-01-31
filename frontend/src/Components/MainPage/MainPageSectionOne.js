@@ -69,6 +69,11 @@ function MainPageSectionOne() {
                     <img src={backgroundImg} alt="" className={classes.mainImgStyle}/>
                     {/* <div id={"akinci2"} className={classes.akinci2}/>
                     <div id={"akinci1"} className={classes.akinci1}/>*/}
+                   {/* <div className={classes.mainText2}>
+                        <Typography className={classes.mainTextStyle2}>
+                            O R D U L U
+                        </Typography>
+                    </div>*/}
                     <Link href="/products#kuzgunproduct">
                         <div id={"kuzgun"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
@@ -200,11 +205,11 @@ function MainPageSectionOne() {
             return (
                 <div style={{position: "relative"}}>
                     <img src={mainImg} alt="" className={classes.mainImgStyle}/>
-                    <div className={classes.mainText}>
+                  {/*  <div className={classes.mainText}>
                         <Typography className={classes.mainTextStyle}>
                             O R D U L U
                         </Typography>
-                    </div>
+                    </div>*/}
                     <div className={classes.mediaIcons}>
                         <Grid container spacing={1}>
                             <Grid item xs={4}>
