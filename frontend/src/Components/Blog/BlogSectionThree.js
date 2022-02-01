@@ -48,7 +48,7 @@ function BlogSectionThree() {
             <Grid container className={classes.reportageGrid} spacing={2} direction="row"
                   justifyContent="center"
                   alignItems="center">
-                <Grid item xs={12} style={{textAlign: "right"}}>
+                <Grid item xs={12} style={{textAlign: "left"}}>
                     <Typography className={classes.reportageTitle}>
                         {t('NewsTitle')}
                     </Typography>

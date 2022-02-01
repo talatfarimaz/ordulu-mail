@@ -226,7 +226,7 @@ function Jobs() {
                                 formData.append("job",t(job.job))
                                 axios({
                                     method: "post",
-                                    url: "/mail/sendjobappmail",
+                                    url: "/api/mail/sendjobappmail",
                                     data: formData,
                                     headers: { "Content-Type": "multipart/form-data" },
                                 })

@@ -26,14 +26,14 @@ function AboutSectionTwo() {
                     <Grid container spacing={4}>
                         <Grid item xs={12}>
                             <Typography className={classes.answer}>
-                                {t('WhoAreWe2')}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} className={classes.reportageGridMargin}>
-                            <Typography className={classes.answer2}>
                                 {t('WhoAreWe3')}
                             </Typography>
                         </Grid>
+                    {/*    <Grid item xs={12} className={classes.reportageGridMargin}>
+                            <Typography className={classes.answer2}>
+                                {t('WhoAreWe3')}
+                            </Typography>
+                        </Grid>*/}
                     </Grid>
                 </Grid>
                 <Grid item sm={6} xs={12}>
@@ -69,7 +69,7 @@ function AboutSectionTwo() {
                             <Typography className={classes.answer2}>
                                 {t('ManagerText')}
                             </Typography>
-                            <Typography className={classes.answer2}>
+                     {/*       <Typography className={classes.answer2}>
                                 {t('ManagerText2')}
                             </Typography>
                             <Typography className={classes.answer2}>
@@ -80,7 +80,7 @@ function AboutSectionTwo() {
                             </Typography>
                             <Typography className={classes.answer2}>
                                 {t('ManagerText5')}
-                            </Typography>
+                            </Typography>*/}
                         </Grid>
                     </Grid>
                 </Grid>

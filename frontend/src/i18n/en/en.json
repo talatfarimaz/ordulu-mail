@@ -31,9 +31,9 @@
   "CopyRight": "© Copyright 2022, Ordulu. All rights reserved.",
   "MailTo": "bilgi@ordulu.com",
   "KVKK": "PDPL",
-  "Address": "ODTÜ Teknokent Bilişim İnovasyon Merkezi,\nMustafa Kemal Mahallesi, No: 280/G, Çankaya, Ankara, Türkiye",
+  "Address": "ÇAMLICA MAH. METEHAN SOK. AA1 BLOK, 06200 Yenimahalle/Ankara",
   "DefenceText": "In Ordulu Information Technologies, a company that develops unique solutions for Unmanned Aerial Vehicles in the field of Defense Industry, you can join the ranks of expert, competent and dynamic engineers in their fields.",
-  "Life": "Yaşam",
+  "Life": "Life",
   "CareerText": "Career",
   "Job": "Job Application",
   "Intern": "Intern Application",
@@ -195,5 +195,6 @@
   "ManagerText2": "He completed his master's degree in Cryptography and Databases from MIT in 2010.",
   "ManagerText3": "Worked at Google and Facebook companies in Silicon Valley between 2010-2014.",
   "ManagerText4": "At the end of 2015, he founded Ordulu Information Technologies company in Ankara, operating in the field of Defense Industry.",
-  "ManagerText5": "Continues to work on Image Processing, Artificial Intelligence and Secure Messaging protocols."
+  "ManagerText5": "Continues to work on Image Processing, Artificial Intelligence and Secure Messaging protocols.",
+  "OrduluBt": "Ordulu Information Technologies"
 }

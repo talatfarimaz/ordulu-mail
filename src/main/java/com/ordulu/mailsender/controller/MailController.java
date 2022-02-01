@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @RestController
-@RequestMapping("/mail")
+@RequestMapping("/api/mail")
 public class MailController {
     @PostMapping("/sendcontactmail")
     public ContactEntity sendContactMail(@RequestBody ContactEntity contact, RedirectAttributes redirectAttributes) {

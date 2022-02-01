@@ -128,12 +128,12 @@ const ProductsStyle = makeStyles(theme => ({
     },
     playIcon: {
         color: DefaultTheme.palette.secondary.contrastText,
-        fontSize: "6vw",
+        fontSize: "80px !important",
         [theme.breakpoints.down('sm')]: {
-            fontSize: "8vw",
+            fontSize: "60px !important",
         },
         [theme.breakpoints.only('xs')]: {
-            fontSize: "10vw",
+            fontSize: "40px !important",
         },
     },
     playText: {
@@ -151,7 +151,7 @@ const ProductsStyle = makeStyles(theme => ({
         textAlign: "center"
     },
     playTextGrid: {
-        textAlign: "center"
+        textAlign: "center",
     },
     backdrop: {
         backgroundColor: "rgb(0 0 0 / 80%) !important"
@@ -190,8 +190,8 @@ const ProductsStyle = makeStyles(theme => ({
     imgDivProduct: {
         backgroundColor: DefaultTheme.palette.secondary.contrastText,
         position: "relative",
-        paddingBottom: theme.spacing(10),
-        paddingTop: theme.spacing(10),
+        paddingBottom: theme.spacing(5),
+        paddingTop: theme.spacing(5),
         display: "flex",
         justifyContent: "center"
     },
@@ -372,6 +372,27 @@ const ProductsStyle = makeStyles(theme => ({
         },
         [theme.breakpoints.down('sm')]: {
             marginLeft: "unset",
+        },
+    },
+    mainLogo: {
+        height: "58px !important",
+        width: "55px !important",
+        marginLeft: "auto",
+        marginRight: "auto",
+        display: "block",
+        paddingTop: theme.spacing(2),
+        [theme.breakpoints.down('md')]: {
+            height: "40px !important",
+            width: "38px !important",
+        },
+    },
+    logoStyle: {
+        width: "30%",
+        [theme.breakpoints.down('md')]: {
+            width: "50%",
+        },
+        [theme.breakpoints.only('xs')]: {
+            width: "70%",
         },
     }
 }));

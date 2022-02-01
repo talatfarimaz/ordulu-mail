@@ -104,7 +104,7 @@ function ContactSectionOne() {
                 if (email !== null && email !== "") {
                     if (phone !== null && phone !== "") {
                         if (message !== null && message !== "") {
-                            axios.post('/mail/sendcontactmail', {
+                            axios.post('/api/mail/sendcontactmail', {
                                 nameSurname: nameSurname,
                                 email: email,
                                 phone: phone,

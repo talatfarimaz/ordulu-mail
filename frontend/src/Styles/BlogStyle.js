@@ -64,7 +64,6 @@ const BlogStyle = makeStyles(theme => ({
         fontSize: "60px !important",
         color: DefaultTheme.palette.secondary.contrastText,
         fontWeight: "bolder !important",
-        paddingBottom: theme.spacing(4),
         [theme.breakpoints.down('md')]: {
             fontSize: "45px !important",
         },
@@ -174,7 +173,7 @@ const BlogStyle = makeStyles(theme => ({
         },
     },
     userNameArea: {
-        textAlign: "right",
+        textAlign: "center",
         [theme.breakpoints.only('xs')]: {
             textAlign: "center",
         },
@@ -182,7 +181,7 @@ const BlogStyle = makeStyles(theme => ({
     sectionTwoDiv: {
         justifyContent: "center",
         display: "flex",
-        paddingTop: theme.spacing(8),
+        paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(8),
 },
     newsDate: {
@@ -250,7 +249,7 @@ const BlogStyle = makeStyles(theme => ({
     },
     focusHighlight: {},
     podcastGrid: {
-        paddingTop: theme.spacing(12)
+        paddingTop: theme.spacing(4)
     },
     underline: {
         '&:before': {

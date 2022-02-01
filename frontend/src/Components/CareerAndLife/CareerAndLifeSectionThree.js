@@ -118,7 +118,7 @@ function CareerAndLifeSectionThree() {
                                 formData.append("phone", phone);
                                 axios({
                                     method: "post",
-                                    url: "/mail/sendinternappmail",
+                                    url: "/api/mail/sendinternappmail",
                                     data: formData,
                                     headers: { "Content-Type": "multipart/form-data" },
                                 })

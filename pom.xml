@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>war</packaging>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -59,96 +58,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>1.6.0</version>
-            <executions>
-            <execution>
-                <id>npm-install</id>
-
-                <goals>
-                    <goal>exec</goal>
-                </goals>
-
-                <phase>prepare-package</phase>
-
-                <configuration>
-                    <executable>npm</executable>
-                    <arguments>
-                        <argument>install</argument>
-                        <argument>--no-audit</argument>
-                    </arguments>
-                    <workingDirectory>${frontend.dir}</workingDirectory>
-                </configuration>
-
-            </execution>
-            <execution>
-            <id>npm-test</id>
-
-            <goals>
-                <goal>exec</goal>
-            </goals>
-                <phase>prepare-package</phase>
-
-                <configuration>
-                    <executable>npm</executable>
-                    <arguments>
-                        <argument>test</argument>
-                        <argument>--</argument>
-                        <argument>--watchAll=false</argument>
-                    </arguments>
-                    <workingDirectory>${frontend.dir}</workingDirectory>
-                    <environmentVariables>
-                        <CI>true</CI>
-                    </environmentVariables>
-                </configuration>
-
-            </execution>
-                <execution>
-                    <id>npm-run-build</id>
-
-                    <goals>
-                        <goal>exec</goal>
-                    </goals>
-
-                    <phase>prepare-package</phase>
-
-                    <configuration>
-                        <executable>npm</executable>
-                        <arguments>
-                            <argument>run</argument>
-                            <argument>build</argument>
-                        </arguments>
-                        <workingDirectory>${frontend.dir}</workingDirectory>
-                    </configuration>
-                </execution>
-            </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
-
-                <executions>
-                    <execution>
-                        <id>copy-react-build</id>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <outputDirectory>${project.build.outputDirectory}/static</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${frontend.dir}/build</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>

@@ -11,7 +11,7 @@ function AboutSectionOne() {
 
     return (
         <div className={classes.imgDiv}>
-            <img src={aboutImg} width={"100%"} alt={""}/>
+            <img src={aboutImg} width={"100%"} alt={""} style={{filter: "blur(3px)"}}/>
             <div className={classes.mainText}>
                 <Typography className={classes.careerAndLifeText}>{t('About2')}</Typography>
             </div>

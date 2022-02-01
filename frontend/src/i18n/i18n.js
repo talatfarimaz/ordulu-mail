@@ -6,9 +6,6 @@ import translationsTR from './tr/tr.json'
 import LanguagesEnum from "./LanguagesEnum";
 
 const resources = {
-    EN: {
-        translation: translationsEN
-    },
     TR: {
         translation: translationsTR
     }
@@ -19,7 +16,8 @@ i18n
     .use(LanguageDetector)
     .init({
         resources,
-        fallbackLng: LanguagesEnum.English, // default language
+        lng: "TR",
+        fallbackLng: LanguagesEnum.Turkish, // default language
         keySeparator: false, // we do not use keys in form messages.welcome
         interpolation: {
             escapeValue: false // react already safes from xss

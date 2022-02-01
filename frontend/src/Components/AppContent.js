@@ -6,17 +6,21 @@ import MainPageSectionTwo from "./MainPage/MainPageSectionTwo";
 import MainPageSectionThree from "./MainPage/MainPageSectionThree";
 import MainPageSectionFour from "./MainPage/MainPageSectionFour";
 import MainPageSectionFive from "./MainPage/MainPageSectionFive";
+import Products from "./Products";
 
 
 function AppContent(props) {
     const classes = AppContentStyle();
     return (
         <div className={classes.bodyDivStyle}>
-            <MainPageSectionOne/>
-            <MainPageSectionTwo/>
-            <MainPageSectionThree/>
+            {/*<MainPageSectionOne/>*/}
+            <Products/>
+         {/*   <MainPageSectionTwo/>
+            <MainPageSectionThree/>*/}
             <MainPageSectionFour/>
+{/*
             <MainPageSectionFive/>
+*/}
         </div>
     );
 }

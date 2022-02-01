@@ -83,12 +83,25 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
             icon: ulak5,
             text: t('UlakText5')
         }, {icon: ulak6, text: t('UlakText6')}]
+    const [selectedProduct, setSelectedProduct] = React.useState(0);
 
     useImperativeHandle(ref, () => ({
         handleGoSelectedProduct(selectedProduct) {
             document.getElementById(selectedProduct).scrollIntoView({behavior: 'smooth'});
         }
+
+
     }));
+
+    useImperativeHandle(ref, () => ({
+        handleGoSelectedProductMobile(selectedIndex) {
+            setSelectedProduct(selectedIndex);
+
+        }
+
+
+    }));
+
 
     const handleGetKuzgunWeb = () => {
         return (
@@ -150,7 +163,7 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
     const handleGetKuzgunMobile = () => {
         return (
             <Grid item xs={12} style={{position: "relative"}}>
-                <img src={kuzgunMobile} width={"100%"} alt={""}/>
+                <img src={kuzgunMobile} width={"100%"} alt={""} onClick={()=>setSelectedProduct()}/>
                 <div className={classes.mainDiv2Mobile2}>
                     <Grid container direction="column"
                           justifyContent="center"
@@ -355,7 +368,7 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
                           spacing={1}
                     >
                         <Grid item md={12} sm={12} xs={12} className={classes.mainLogoGridMobile}>
-                            <img src={sahinMain} className={classes.mainIcon} alt={""}/>
+                            <img src={gamMain} className={classes.mainIcon} alt={""}/>
                         </Grid>
                         <Grid item md={12} sm={12} xs={12} className={classes.iconsGrid}>
                             <Grid container spacing={1}>
@@ -576,7 +589,7 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
         <div className={classes.imgDivProduct}>
             <Grid container spacing={8} className={classes.productImages}>
                 <Hidden smUp>
-                    <Carousel timeout={400} navButtonsAlwaysVisible={false} autoPlay={false} indicators={false}>
+                    <Carousel timeout={400} navButtonsAlwaysVisible={true} autoPlay={false}  indicators={true} index={selectedProduct}>
                         <Paper>
                             {handleGetKuzgunMobile()}
                         </Paper>

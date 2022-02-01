@@ -72,6 +72,42 @@ function BlogSectionTwo() {
                         {t('Reportage')}
                     </Typography>
                 </Grid>
+                <Grid item xs={12} id="reportage2">
+                    <Grid container className={classes.podcastGrid}>
+                        <Grid item md={2} sm={3} xs={12}/>
+                        <Grid item md={8} sm={6} xs={12} className={classes.podcastText}>
+                            <Link href={"https://www.youtube.com/watch?v=YUsSLDgFsQQ"} target={"blank"}>
+                                <Typography className={classes.questionTitle}>
+                                    {t('Podcast1')}
+                                </Typography>
+                                <Typography className={classes.questionTitle2}>
+                                    {t('Podcast2')}
+                                </Typography>
+                                <Typography className={classes.questionTitle}>
+                                    {t('Podcast3')}
+                                </Typography>
+                            </Link>
+                        </Grid>
+                        <Grid item md={2} sm={3} xs={12}/>
+                        <Grid item md={3} sm={3} xs={12}/>
+                        <Grid item md={6} sm={6} xs={12}>
+                            <CardActionArea href={"https://www.youtube.com/watch?v=YUsSLDgFsQQ"} target={"blank"}>
+                                <img src={nizamReportage} width={"100%"} alt={""}/>
+                            </CardActionArea>
+                        </Grid>
+                        <Grid item md={3} sm={3} xs={12}/>
+                    </Grid>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                    <Grid item xs={12} className={classes.userNameArea}>
+                        <Typography className={classes.questionTitle}>
+                            {t('User')}
+                        </Typography>
+                        <Typography className={classes.questionTitle2}>
+                            {t('Developer')}
+                        </Typography>
+                    </Grid>
+                </Grid>
                 <Grid item sm={7} xs={12}>
                     <Grid container spacing={8}>
                         <Grid item xs={12}>
@@ -103,40 +139,6 @@ function BlogSectionTwo() {
                         <Grid item xs={12}>
                             <img src={kazim2} alt={""} width={"100%"}/>
                         </Grid>
-                        <Grid item xs={12} className={classes.userNameArea}>
-                            <Typography className={classes.userName}>
-                                {t('User')}
-                            </Typography>
-                            <Typography className={classes.developer}>
-                                {t('Developer')}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
-                <Grid item xs={12} id="reportage2">
-                    <Grid container className={classes.podcastGrid}>
-                        <Grid item md={3} sm={3} xs={12}/>
-                        <Grid item md={6} sm={6} xs={12}>
-                            <CardActionArea href={"https://www.youtube.com/watch?v=YUsSLDgFsQQ"} target={"blank"}>
-                                <img src={nizamReportage} width={"100%"} alt={""}/>
-                            </CardActionArea>
-                        </Grid>
-                        <Grid item md={3} sm={3} xs={12}/>
-                        <Grid item md={2} sm={3} xs={12}/>
-                        <Grid item md={8} sm={6} xs={12} className={classes.podcastText}>
-                            <Link href={"https://www.youtube.com/watch?v=YUsSLDgFsQQ"} target={"blank"}>
-                                <Typography className={classes.questionTitle}>
-                                    {t('Podcast1')}
-                                </Typography>
-                                <Typography className={classes.questionTitle2}>
-                                    {t('Podcast2')}
-                                </Typography>
-                                <Typography className={classes.questionTitle}>
-                                    {t('Podcast3')}
-                                </Typography>
-                            </Link>
-                        </Grid>
-                        <Grid item md={2} sm={3} xs={12}/>
                     </Grid>
                 </Grid>
             </Grid>

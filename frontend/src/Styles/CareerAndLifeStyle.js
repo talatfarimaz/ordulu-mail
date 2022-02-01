@@ -20,7 +20,7 @@ const CareerAndLifeStyle = makeStyles(theme => ({
         left: "50%",
         transform: "translate(-50%, -50%)",
         [theme.breakpoints.down('sm')]: {
-            top: "20%",
+            top: "30%",
         },
     },
     careerAndLifeText: {

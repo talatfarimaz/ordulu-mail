@@ -30,13 +30,13 @@ const AppContentStyle = makeStyles(theme => ({
         transform: "translate(-50%, -50%)",
     },
     mainText2: {
-        position: "absolute",
+        position: "fixed",
         top: "10%",
         left: "20%",
         right: "20%",
         textAlign: "center",
         [theme.breakpoints.only('xs')]: {
-            top: "5%",
+            top: "7%",
         },
     },
     mainTextStyle: {
@@ -54,7 +54,7 @@ const AppContentStyle = makeStyles(theme => ({
         },
     },
     mainTextStyle2: {
-        fontSize: "50px !important",
+        fontSize: "60px !important",
         color: DefaultTheme.palette.secondary.contrastText,
         fontWeight: "bold !important",
         [theme.breakpoints.down('md')]: {
@@ -64,7 +64,7 @@ const AppContentStyle = makeStyles(theme => ({
             fontSize: "30px !important",
         },
         [theme.breakpoints.only('xs')]: {
-            fontSize: "18px !important",
+            fontSize: "20px !important",
         },
     },
     mediaIcons: {
@@ -158,8 +158,8 @@ const AppContentStyle = makeStyles(theme => ({
         backgroundRepeat: "no-repeat",
         backgroundSize: "contain",
         position: "absolute",
-        top: "73%",
-        left: "58%",
+        top: "80%",
+        left: "55%",
     }
     ,
     arz: {
@@ -291,6 +291,13 @@ const AppContentStyle = makeStyles(theme => ({
         right: "20%",
         textAlign: "center"
     },
+    productNameDiv2: {
+        position: "absolute",
+        top: "-50%",
+        left: "20%",
+        right: "20%",
+        textAlign: "center"
+    },
     iconText: {
         textAlign: "center"
     },
@@ -344,6 +351,7 @@ const AppContentStyle = makeStyles(theme => ({
         backgroundColor: DefaultTheme.palette.primary.main,
         height: "60vw",
         position: "relative",
+        textAlign: "right",
         [theme.breakpoints.only('sm')]: {
             height: "60vw",
         },

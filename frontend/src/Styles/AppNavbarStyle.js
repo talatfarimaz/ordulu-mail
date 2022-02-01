@@ -100,8 +100,11 @@ const AppNavbarStyle = makeStyles(theme => ({
     },
     languageButton: {
         width: "59px",
-        height: "59px"
-
+        height: "59px",
+        marginLeft: theme.spacing(-4),
+            [theme.breakpoints.only('xs')]: {
+                marginLeft: "unset",
+},
     },
     languageText: {
         fontSize: "1rem",
@@ -219,6 +222,19 @@ const AppNavbarStyle = makeStyles(theme => ({
         [theme.breakpoints.only('md')]: {
             display: "none"
         },
+    },
+    shortLink: {
+        marginLeft: theme.spacing(-2),
+        [theme.breakpoints.only('xs')]: {
+            marginLeft: "unset"}
+    },
+    logoMargin: {
+        marginLeft: theme.spacing(12),
+        [theme.breakpoints.down('sm')]: {
+            marginLeft: theme.spacing(4),
+        },
+        [theme.breakpoints.only('xs')]: {
+            marginLeft: "unset"}
     }
 }));
 

@@ -6,7 +6,7 @@ import classNames from "classnames";
 import teaser from "../../assets/video/teaser.mp4";
 import productsImg from "../../assets/images/productsImg.png";
 import PlayCircleOutlineOutlinedIcon from '@material-ui/icons/PlayCircleOutlineOutlined';
-import {Backdrop, Dialog, Fade, Grid, Hidden, Paper, Typography} from "@material-ui/core";
+import {Avatar, Backdrop, Dialog, Fade, Grid, Hidden, Paper, Typography} from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import arzlogo from "../../assets/images/products/renkliarz.png";
 import kuzgunlogo from "../../assets/images/products/renklikuzgun.png";
@@ -19,6 +19,8 @@ import greykuzgun from "../../assets/images/products/kuzgun.png";
 import greysahin from "../../assets/images/products/şahin.png";
 import greyulak from "../../assets/images/products/ulak.png";
 import Carousel from "react-material-ui-carousel";
+import logo from "../../assets/images/logo.png";
+import orduluLogo from "../../assets/images/orduluLogo.png";
 
 
 function ProductsSectionOne(props) {
@@ -46,6 +48,10 @@ function ProductsSectionOne(props) {
 
     const handleGoSelectedProduct = (selectedProduct) => {
         props.handleGoSelectedProduct(selectedProduct)
+    }
+
+    const handleGoSelectedProductMobile = (selectedIndex) => {
+        props.handleGoSelectedProductMobile( selectedIndex)
     }
 
     const handleGetModal = () => {
@@ -89,9 +95,13 @@ function ProductsSectionOne(props) {
                         </IconButton>
                     </Grid>
                     <Grid item xs={12} className={classes.playTextGrid}>
-                        <Typography className={classes.playText}>
-                            {t('PlayVideo')}
-                        </Typography>
+{/*
+                        <Avatar className={classes.mainLogo} src={orduluLogo}/>
+*/}
+                      {/*  <Typography className={classes.playText}>
+                            {t('OrduluBt')}
+                        </Typography>*/}
+                        <img src={orduluLogo} alt={""} width={"30%"} className={classes.logoStyle}/>
                     </Grid>
                     <Grid item xs={12} className={classes.productGrid}>
                         <Hidden only={"xs"}>
@@ -161,36 +171,46 @@ function ProductsSectionOne(props) {
 
                         </Hidden>
                         <Hidden smUp>
-                            <Carousel timeout={500} navButtonsAlwaysVisible={false} autoPlay={false} indicators={false}>
+                            <Carousel timeout={500} navButtonsAlwaysVisible={true} autoPlay={false} indicators={true}>
                                 <Paper className={classes.carouselStyle}>
                                     <Grid container spacing={2} className={classes.carouselGrid}>
-                                        <Grid item xs={3}>
-                                            <img src={kuzgunlogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={kuzgunlogo} alt={""} width={"100%"}
+                                                 onClick={() =>
+                                                     handleGoSelectedProductMobile(0)}
+                                            />
                                         </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={gamlogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={gamlogo} alt={""} width={"100%"}
+                                                 onClick={() =>
+                                                     handleGoSelectedProductMobile(1)}
+                                            />
                                         </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={sahinlogo} alt={""} width={"100%"}/>
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={arzlogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={sahinlogo} alt={""} width={"100%"} onClick={() =>
+                                                handleGoSelectedProductMobile(2)}/>
                                         </Grid>
                                     </Grid>
                                 </Paper>
                                 <Paper className={classes.carouselStyle}>
                                     <Grid container spacing={2} className={classes.carouselGrid}>
-                                        <Grid item xs={3}>
-                                            <img src={ulaklogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={arzlogo} alt={""} width={"100%"}
+                                                 onClick={() =>
+                                                     handleGoSelectedProductMobile(3)}
+                                            />
                                         </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={kuzgunlogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={ulaklogo} alt={""} width={"100%"}
+                                                 onClick={() =>
+                                                     handleGoSelectedProductMobile(4)}
+                                            />
                                         </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={gamlogo} alt={""} width={"100%"}/>
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <img src={sahinlogo} alt={""} width={"100%"}/>
+                                        <Grid item xs={4}>
+                                            <img src={kuzgunlogo} alt={""} width={"100%"}
+                                                 onClick={() =>
+                                                     handleGoSelectedProductMobile(0)}
+                                            />
                                         </Grid>
                                     </Grid>
                                 </Paper>

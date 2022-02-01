@@ -63,18 +63,20 @@ function MainPageSectionOne() {
 
     }
     const handleGetImg = () => {
+/*
         if (changeImg) {
+*/
             return (
                 <div style={{position: "relative"}}>
                     <img src={backgroundImg} alt="" className={classes.mainImgStyle}/>
                     {/* <div id={"akinci2"} className={classes.akinci2}/>
                     <div id={"akinci1"} className={classes.akinci1}/>*/}
-                   {/* <div className={classes.mainText2}>
+                    <div className={classes.mainText2}>
                         <Typography className={classes.mainTextStyle2}>
                             O R D U L U
                         </Typography>
-                    </div>*/}
-                    <Link href="/products#kuzgunproduct">
+                    </div>
+                    <Link href="/#kuzgunproduct">
                         <div id={"kuzgun"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
                             setKuzgun(true)
@@ -96,7 +98,7 @@ function MainPageSectionOne() {
                                 </div>}
                         </div>
                     </Link>
-                    <Link href="/products#gamproduct">
+                    <Link href="/#gamproduct">
                         <div id={"gam"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
                             setGam(true)
@@ -116,7 +118,7 @@ function MainPageSectionOne() {
                                 </div>}
                         </div>
                     </Link>
-                    <Link href="/products#arzproduct">
+                    <Link href="/#arzproduct">
                         <div id={"arz"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
                             setArz(true)
@@ -136,7 +138,7 @@ function MainPageSectionOne() {
                                 </div>}
                         </div>
                     </Link>
-                    <Link href="/products#sahinproduct">
+                    <Link href="/#sahinproduct">
                         <div id={"sahin"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
                             setSahin(true)
@@ -148,7 +150,7 @@ function MainPageSectionOne() {
                                  setBackgroundImg(akinciBackground)
                              }} className={classes.sahin}>
                             {sahin &&
-                                <div className={classes.productNameDiv}>
+                                <div className={classes.productNameDiv2}>
                                     <Typography className={classes.productName}>
                                         ŞAHİN
                                     </Typography>
@@ -158,7 +160,7 @@ function MainPageSectionOne() {
                                 </div>}
                         </div>
                     </Link>
-                    <Link href="/products#ulakproduct">
+                    <Link href="/#ulakproduct">
                         <div id={"ulak"} onMouseEnter={(event) => {
                             handleChangeWidthAndHeight(event)
                             setUlak(true)
@@ -201,15 +203,15 @@ function MainPageSectionOne() {
                     </div>
                 </div>
             )
-        } else {
+     /*   } else {
             return (
                 <div style={{position: "relative"}}>
                     <img src={mainImg} alt="" className={classes.mainImgStyle}/>
-                  {/*  <div className={classes.mainText}>
+                  {/!*  <div className={classes.mainText}>
                         <Typography className={classes.mainTextStyle}>
                             O R D U L U
                         </Typography>
-                    </div>*/}
+                    </div>*!/}
                     <div className={classes.mediaIcons}>
                         <Grid container spacing={1}>
                             <Grid item xs={4}>
@@ -232,7 +234,7 @@ function MainPageSectionOne() {
 
                 </div>
             )
-        }
+        }*/
     };
     return (
         <div className={classes.imageAnimation}>
