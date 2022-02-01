@@ -88,12 +88,7 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
     useImperativeHandle(ref, () => ({
         handleGoSelectedProduct(selectedProduct) {
             document.getElementById(selectedProduct).scrollIntoView({behavior: 'smooth'});
-        }
-
-
-    }));
-
-    useImperativeHandle(ref, () => ({
+        },
         handleGoSelectedProductMobile(selectedIndex) {
             setSelectedProduct(selectedIndex);
 
@@ -101,6 +96,15 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
 
 
     }));
+
+ /*   useImperativeHandle(ref, () => ({
+        handleGoSelectedProductMobile(selectedIndex) {
+            setSelectedProduct(selectedIndex);
+
+        }
+
+
+    }));*/
 
 
     const handleGetKuzgunWeb = () => {

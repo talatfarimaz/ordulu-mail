@@ -45,7 +45,7 @@ public class MailController {
                 "</div>";
         MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("talat.farimaz@ordulu.com");
+            messageHelper.setFrom("orduluwebform@ordulu.com");
             messageHelper.setTo("ik@ordulu.com");
             messageHelper.setSubject(contact.getSubject());
             messageHelper.setText(content, true);
@@ -104,7 +104,7 @@ public class MailController {
         }
         MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("talat.farimaz@ordulu.com");
+            messageHelper.setFrom("orduluwebform@ordulu.com");
             messageHelper.setTo("ik@ordulu.com");
             messageHelper.setSubject("subject");
             messageHelper.setText(content, true);
@@ -161,7 +161,7 @@ public class MailController {
         }
         MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("talat.farimaz@ordulu.com");
+            messageHelper.setFrom("orduluwebform@ordulu.com");
             messageHelper.setTo("ik@ordulu.com");
             messageHelper.setSubject("subject");
             messageHelper.setText(content, true);

@@ -7,6 +7,7 @@ import {useRef} from "react";
 function Products() {
     const classes = ProductsStyle();
     const ref = useRef();
+    const ref2 = useRef();
     const handleGoSelectedProduct = (selectedProduct) => {
         ref.current.handleGoSelectedProduct(selectedProduct);
     }
