@@ -65,7 +65,7 @@ function Jobs() {
             job: t('Job2'),
             definition: t('Job2CommonQualification'),
             application: t('Job2Application'),
-            choice: t('Job2ChoiceQualification')
+            choice: null
         },
         {job: t('Job3'), definition: t('Job3CommonQualification'), application: t('Job3Application'), choice: null},
         {job: t('Job4'), definition: t('Job4CommonQualification'), application: t('Job4Application'), choice: null},
@@ -73,20 +73,38 @@ function Jobs() {
             job: t('Job5'),
             definition: t('Job5CommonQualification'),
             application: t('Job5Application'),
-            choice: t('Job5ChoiceQualification')
+            choice: null
         },
         {
             job: t('Job6'),
             definition: t('Job6CommonQualification'),
             application: t('Job6Application'),
-            choice: t('Job6ChoiceQualification')
+            choice: null
         },
         {job: t('Job7'), definition: t('Job7CommonQualification'), application: t('Job7Application'), choice: null},
         {
             job: t('Job8'),
             definition: t('Job8CommonQualification'),
             application: t('Job8Application'),
-            choice: t('Job8ChoiceQualification')
+            choice: null
+        },
+        {
+            job: t('Job9'),
+            definition: t('Job9CommonQualification'),
+            application: t('Job9Application'),
+            choice: null
+        },
+        {
+            job: t('Job10'),
+            definition: t('Job10CommonQualification'),
+            application: t('Job10Application'),
+            choice: null
+        },
+        {
+            job: t('Job11'),
+            definition: t('Job11CommonQualification'),
+            application: t('Job11Application'),
+            choice: null
         },
 
     ]
@@ -223,7 +241,7 @@ function Jobs() {
                                 formData.append("identity", identity);
                                 formData.append("email", email);
                                 formData.append("phone", phone);
-                                formData.append("job",t(job.job))
+                                formData.append("job",job.job)
                                 axios({
                                     method: "post",
                                     url: "/api/mail/sendjobappmail",

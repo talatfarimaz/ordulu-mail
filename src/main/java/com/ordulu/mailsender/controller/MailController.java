@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.activation.DataHandler;
 import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -86,7 +89,65 @@ public class MailController {
                 "<label>Mail: " +email+"</label><br/>" +
                 "<label>Telefon: " +phone+"</label>" +
                 "</div>";
-        MimeBodyPart attachPart = new MimeBodyPart();
+
+
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("orduluwebform@ordulu.com", "#zQWn33M");
+                    }
+                });
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress("orduluwebform@ordulu.com"));
+
+            // Set To: header field of the header.
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("ik@ordulu.com"));
+
+            // Set Subject: header field
+            message.setSubject("İş Başvurusu");
+
+            // Create the message part
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Now set the actual message
+            messageBodyPart.setText(content);
+
+            // Create a multipar message
+            Multipart multipart = new MimeMultipart();
+
+            // Set text message part
+            multipart.addBodyPart(messageBodyPart);
+
+            // Part two is attachment
+            messageBodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(file.getOriginalFilename());
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(file.getOriginalFilename());
+            multipart.addBodyPart(messageBodyPart);
+
+            // Send the complete message parts
+            message.setContent(multipart);
+
+            // Send message
+            javaMailSender.send(message);
+/*
+            Transport.send(message);
+*/
+
+            return identity;
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+       /* MimeBodyPart attachPart = new MimeBodyPart();
         try {
             attachPart.setContent(file.getBytes(), file.getContentType());
         } catch (MessagingException | IOException e) {
@@ -116,7 +177,7 @@ public class MailController {
             return identity;
         } catch (MailException e) {
             throw e;
-        }
+        }*/
     }
 
     @PostMapping(value = "/sendinternappmail", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -143,7 +204,64 @@ public class MailController {
                 "<label>Mail: " +email+"</label><br/>" +
                 "<label>Telefon: " +phone+"</label><br/>" +
                 "</div>";
-        MimeBodyPart attachPart = new MimeBodyPart();
+
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication("orduluwebform@ordulu.com", "#zQWn33M");
+                    }
+                });
+
+        try {
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress("orduluwebform@ordulu.com"));
+
+            // Set To: header field of the header.
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse("ik@ordulu.com"));
+
+            // Set Subject: header field
+            message.setSubject("Staj Başvurusu");
+
+            // Create the message part
+            BodyPart messageBodyPart = new MimeBodyPart();
+
+            // Now set the actual message
+            messageBodyPart.setText(content);
+
+            // Create a multipar message
+            Multipart multipart = new MimeMultipart();
+
+            // Set text message part
+            multipart.addBodyPart(messageBodyPart);
+
+            // Part two is attachment
+            messageBodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(file.getOriginalFilename());
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName(file.getOriginalFilename());
+            multipart.addBodyPart(messageBodyPart);
+
+            // Send the complete message parts
+            message.setContent(multipart);
+
+            // Send message
+            javaMailSender.send(message);
+/*
+            Transport.send(message);
+*/
+
+            return identity;
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+
+       /* MimeBodyPart attachPart = new MimeBodyPart();
         try {
             attachPart.setContent(file.getBytes(), file.getContentType());
         } catch (MessagingException e) {
@@ -172,7 +290,7 @@ public class MailController {
             return identity;
         } catch (MailException e) {
             throw e;
-        }
+        }*/
     }
 
     @GetMapping("/map")

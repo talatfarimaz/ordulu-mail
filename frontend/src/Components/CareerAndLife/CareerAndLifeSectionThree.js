@@ -45,7 +45,7 @@ function CareerAndLifeSectionThree() {
     const [identity, setIdentity] = React.useState(null);
     const [phone, setPhone] = React.useState(null);
     const [email, setEmail] = React.useState(null);
-    const [cv, setCv] = React.useState(null);
+    const [cv, setCv] = React.useState();
     const [openAlert, setOpenAlert] = React.useState(false);
     const [openAlert2, setOpenAlert2] = React.useState(false);
     const [alert, setAlert] = React.useState("");
