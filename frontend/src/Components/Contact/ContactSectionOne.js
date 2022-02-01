@@ -104,45 +104,51 @@ function ContactSectionOne() {
                 if (email !== null && email !== "") {
                     if (phone !== null && phone !== "") {
                         if (message !== null && message !== "") {
-                            axios.post('/api/mail/sendcontactmail', {
-                                nameSurname: nameSurname,
-                                email: email,
-                                phone: phone,
-                                subject: subject,
-                                message: message
-                            }).then(function (response) {
-                                setOpenAlert(false);
-                                setOpenAlert2(true);
-                                setAlert2("Başarılı!");
-                                setSeverity("success");
-                            })
-                                .catch(function (response) {
+                            if (checked) {
+                                axios.post('/api/mail/sendcontactmail', {
+                                    nameSurname: nameSurname,
+                                    email: email,
+                                    phone: phone,
+                                    subject: subject,
+                                    message: message
+                                }).then(function (response) {
                                     setOpenAlert(false);
                                     setOpenAlert2(true);
-                                    setAlert2("Bir hata oluştu!!");
-                                    setSeverity("error");
-                                });
+                                    setAlert2("Başarılı!");
+                                    setSeverity("success");
+                                })
+                                    .catch(function (response) {
+                                        setOpenAlert(false);
+                                        setOpenAlert2(true);
+                                        setAlert2("Bir hata oluştu!!");
+                                        setSeverity("error");
+                                    });
+                            }
+                          else {
+                                setOpenAlert(true);
+                                setAlert(t('KVKKCheck'));
+                            }
                         } else {
                             setOpenAlert(true);
-                            setAlert(t('YourMessage'));
+                            setAlert(t('NullCheckValue', {value: t('YourMessage')}));
                         }
 
                     } else {
                         setOpenAlert(true);
-                        setAlert(t('Phone'));
+                        setAlert(t('NullCheckValue', {value: t('Phone')}));
                     }
                 } else {
                     setOpenAlert(true);
-                    setAlert(t('EMail'));
+                    setAlert(t('NullCheckValue', {value: t('EMail')}));
                 }
             } else {
                 setOpenAlert(true);
-                setAlert(t('Subject'));
+                setAlert(t('NullCheckValue', {value: t('Subject')}));
             }
 
         } else {
             setOpenAlert(true);
-            setAlert(t('NameSurname'));
+            setAlert(t('NullCheckValue', {value: t('NameSurname')}));
         }
 
     }
@@ -157,7 +163,7 @@ function ContactSectionOne() {
                 <Alert onClose={() => {
                     setOpenAlert(false)
                 }} severity={"error"}>
-                    {alert !== t('AddCv') ? t('NullCheckValue', {value: alert}): t('AddCv')}
+                    {alert}
                 </Alert>
             </Snackbar>
         )

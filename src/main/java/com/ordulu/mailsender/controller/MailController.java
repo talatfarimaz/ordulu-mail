@@ -29,8 +29,8 @@ public class MailController {
         String host = "mail.ordulu.com";
         javaMailSender.setHost(host);
         javaMailSender.setPort(25);
-        javaMailSender.setPassword("ordulu58..");
-        javaMailSender.setUsername("talat.farimaz@ordulu.com");
+        javaMailSender.setPassword("#zQWn33M");
+        javaMailSender.setUsername("orduluwebform@ordulu.com");
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
@@ -71,8 +71,8 @@ public class MailController {
         String host = "mail.ordulu.com";
         javaMailSender.setHost(host);
         javaMailSender.setPort(25);
-        javaMailSender.setPassword("ordulu58..");
-        javaMailSender.setUsername("talat.farimaz@ordulu.com");
+        javaMailSender.setPassword("#zQWn33M");
+        javaMailSender.setUsername("orduluwebform@ordulu.com");
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
@@ -129,8 +129,8 @@ public class MailController {
         String host = "mail.ordulu.com";
         javaMailSender.setHost(host);
         javaMailSender.setPort(25);
-        javaMailSender.setPassword("ordulu58..");
-        javaMailSender.setUsername("talat.farimaz@ordulu.com");
+        javaMailSender.setPassword("#zQWn33M");
+        javaMailSender.setUsername("orduluwebform@ordulu.com");
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
