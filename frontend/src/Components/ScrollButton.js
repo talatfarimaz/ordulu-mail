@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Fab} from "@material-ui/core";
-import EjectIcon from '@material-ui/icons/Eject';
+import {Fab, Hidden} from "@material-ui/core";
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ScrollButtonStyles from "../Styles/ScrollButtonStyles";
 
 const ScrollButton = () => {
@@ -25,9 +25,18 @@ const ScrollButton = () => {
     window.addEventListener('scroll', toggleVisible);
 
     return (
+        <div>
+        <Hidden smDown>
         <Fab className={classes.fabStyle} onClick={scrollToTop} color={"primary"} size={"large"} style={{display: visible ? 'flex' : 'none'}}>
-            <EjectIcon fontSize={"large"} />
+            <ArrowUpwardIcon fontSize={"large"} />
         </Fab>
+        </Hidden>
+            <Hidden mdUp>
+                <Fab className={classes.fabStyle} onClick={scrollToTop} color={"primary"} size={"small"} style={{display: visible ? 'flex' : 'none'}}>
+                    <ArrowUpwardIcon fontSize={"small"} />
+                </Fab>
+            </Hidden>
+        </div>
     );
 }
 

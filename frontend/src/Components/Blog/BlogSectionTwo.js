@@ -99,7 +99,7 @@ function BlogSectionTwo() {
                     </Grid>
                 </Grid>
                 <Grid item sm={12} xs={12}>
-                    <Grid item xs={12} className={classes.userNameArea}>
+                    <Grid item xs={12} className={classNames(classes.userNameArea, classes.developerPadding)}>
                         <Typography className={classes.questionTitle}>
                             {t('User')}
                         </Typography>

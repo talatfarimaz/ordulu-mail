@@ -171,7 +171,7 @@ function ProductsSectionOne(props) {
 
                         </Hidden>
                         <Hidden smUp>
-                            <Carousel timeout={500} navButtonsAlwaysVisible={true} autoPlay={false} indicators={true}>
+                            <Carousel timeout={500} navButtonsAlwaysVisible={false} swipe={true} autoPlay={false} indicators={true}>
                                 <Paper className={classes.carouselStyle}>
                                     <Grid container spacing={2} className={classes.carouselGrid}>
                                         <Grid item xs={4}>

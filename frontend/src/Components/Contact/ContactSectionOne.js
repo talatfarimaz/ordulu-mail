@@ -116,6 +116,12 @@ function ContactSectionOne() {
                                     setOpenAlert2(true);
                                     setAlert2("Başarılı!");
                                     setSeverity("success");
+                                    setNameSurname("");
+                                    setEmail("");
+                                    setPhone("");
+                                    setSubject("");
+                                    setMessage("");
+                                    setChecked(false);
                                 })
                                     .catch(function (response) {
                                         setOpenAlert(false);
@@ -123,8 +129,7 @@ function ContactSectionOne() {
                                         setAlert2("Bir hata oluştu!!");
                                         setSeverity("error");
                                     });
-                            }
-                          else {
+                            } else {
                                 setOpenAlert(true);
                                 setAlert(t('KVKKCheck'));
                             }
@@ -346,28 +351,34 @@ function ContactSectionOne() {
                                 </Typography>
                             </Button>
                         </div>
-                        <div className={classes.kvkk}>
-                            <Link
-                                underline={"none"}
-                                onMouseEnter={(__Event) => {
-                                    __Event.target.style.color = DefaultTheme.palette.secondary.main
+                        <div className={classes.kvkk} style={{display: "flex"}}>
+                            <Checkbox
+                                checked={checked}
+                                onChange={(event) => {
+                                    setChecked(event.target.checked)
                                 }}
-                                onMouseOut={(__Event) => {
-                                    __Event.target.style.color = DefaultTheme.palette.success.contrastText
-                                }}
-                                onClick={handleOpen}
-                            >
-                                <Typography className={classes.checkBoxText}>
-                                    <Checkbox
-                                        checked={checked}
-                                        onChange={(event) => {
-                                            setChecked(event.target.checked)
-                                        }}
-                                        style={{color: DefaultTheme.palette.secondary.contrastText}}
-                                        className={classes.checkBoxStyle}/>
-                                    {t('KVKK2')}{t('Acceptance')}
-                                </Typography>
-                            </Link>
+                                style={{color: DefaultTheme.palette.secondary.contrastText}}
+                                className={classes.checkBoxStyle}/>
+                            <div style={{
+                                marginTop: "auto",
+                                marginBottom: "auto",
+                            }}>
+                                <Link
+                                    underline={"none"}
+                                    onMouseEnter={(__Event) => {
+                                        __Event.target.style.color = DefaultTheme.palette.secondary.main
+                                    }}
+                                    onMouseOut={(__Event) => {
+                                        __Event.target.style.color = DefaultTheme.palette.success.contrastText
+                                    }}
+                                    onClick={handleOpen}
+                                >
+                                    <Typography className={classes.checkBoxText}>
+
+                                        {t('KVKK2')}{t('Acceptance')}
+                                    </Typography>
+                                </Link>
+                            </div>
                         </div>
                     </Grid>
                     <Grid item md={4} sm={6} xs={12}/>

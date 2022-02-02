@@ -591,7 +591,7 @@ const ProductsSectionTwo = forwardRef((props, ref) => {
 
     return (
         <div className={classes.imgDivProduct}>
-            <Grid container spacing={8} className={classes.productImages}>
+            <Grid container spacing={4} className={classes.productImages}>
                 <Hidden smUp>
                     <Carousel timeout={400} navButtonsAlwaysVisible={true} autoPlay={false}  indicators={true} index={selectedProduct}>
                         <Paper>

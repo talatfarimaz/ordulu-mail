@@ -2,6 +2,7 @@ package com.ordulu.mailsender.controller;
 
 import com.ordulu.mailsender.entities.ContactEntity;
 import com.ordulu.mailsender.entities.JobApplicationEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -10,16 +11,15 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
+import javax.mail.util.ByteArrayDataSource;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -27,7 +27,7 @@ import java.util.Properties;
 @RequestMapping("/api/mail")
 public class MailController {
     @PostMapping("/sendcontactmail")
-    public ContactEntity sendContactMail(@RequestBody ContactEntity contact, RedirectAttributes redirectAttributes) {
+    public ContactEntity sendContactMail(@RequestBody ContactEntity contact) throws MessagingException {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         String host = "mail.ordulu.com";
         javaMailSender.setHost(host);
@@ -37,26 +37,44 @@ public class MailController {
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
-        props.put("mail.smtp.timeout", 1000);
+        props.put("mail.smtp.timeout", 20000);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "25");
         String content = "<div>" +
-                "<label>"+contact.getNameSurname()+" isimli kullanıcı"+"</label>" +
+                "<label>"+contact.getNameSurname()+" isimli kullanıcı "+"</label>" +
                 "<label>"+contact.getEmail()+" maili ve "+"</label>" +
                 "<label>"+contact.getPhone()+" numarasıyla "+"</label>" +
-                "<label>"+contact.getMessage()+" konusunda yardım bekliyor."+"</label>" +
+                "<label>"+" yardım bekliyor."+"</label></br>" +
+                "<label>"+"Mesaj: "+contact.getMessage()+"</label>"+
                 "</div>";
-        MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("orduluwebform@ordulu.com");
-            messageHelper.setTo("ik@ordulu.com");
-            messageHelper.setSubject(contact.getSubject());
-            messageHelper.setText(content, true);
-        };
+
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("orduluwebform@ordulu.com", "#zQWn33M");
+            }
+        });
+
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress("orduluwebform@ordulu.com"));
+        message.setRecipients(
+                Message.RecipientType.TO, InternetAddress.parse("ik@ordulu.com"));
+        message.setSubject(contact.getSubject());
+
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(content, "text/html; charset=utf-8");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(mimeBodyPart);
+
+        message.setContent(multipart);
         try {
-            javaMailSender.send(mimeMessagePreparator);
+            Transport.send(message);
             return contact;
-        } catch (MailException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             throw e;
         }
     }
@@ -70,8 +88,9 @@ public class MailController {
                                          @RequestParam String phone,
                                          @RequestParam String job
     ) {
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+
         String host = "mail.ordulu.com";
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost(host);
         javaMailSender.setPort(25);
         javaMailSender.setPassword("#zQWn33M");
@@ -79,9 +98,11 @@ public class MailController {
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
-        props.put("mail.smtp.timeout", 1000);
+        props.put("mail.smtp.timeout", 20000);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "25");
         String content = "<div><strong>İş Başvurusu</strong><br/>" +
                 "<label>İlan: " + job+ " "+ "</label><br/>" +
                 "<label>Kimden: " + name+ " "+ surname+"</label><br/>" +
@@ -90,8 +111,6 @@ public class MailController {
                 "<label>Telefon: " +phone+"</label>" +
                 "</div>";
 
-
-        // Get the Session object.
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -100,84 +119,29 @@ public class MailController {
                 });
 
         try {
-            // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress("orduluwebform@ordulu.com"));
-
-            // Set To: header field of the header.
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse("ik@ordulu.com"));
-
-            // Set Subject: header field
             message.setSubject("İş Başvurusu");
-
-            // Create the message part
             BodyPart messageBodyPart = new MimeBodyPart();
-
-            // Now set the actual message
-            messageBodyPart.setText(content);
-
-            // Create a multipar message
+            messageBodyPart.setText("İs Başvurusu");
+            messageBodyPart.setContent(content,"text/html; charset=utf-8");
             Multipart multipart = new MimeMultipart();
-
-            // Set text message part
             multipart.addBodyPart(messageBodyPart);
-
-            // Part two is attachment
-            messageBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(file.getOriginalFilename());
-            messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(file.getOriginalFilename());
-            multipart.addBodyPart(messageBodyPart);
-
-            // Send the complete message parts
+            MimeBodyPart attachment = new MimeBodyPart();
+            DataSource dataSrc = new ByteArrayDataSource(file.getBytes(), "application/pdf");
+            attachment.setDataHandler(new DataHandler(dataSrc));
+            attachment.setFileName(file.getOriginalFilename());
+            multipart.addBodyPart(attachment);
             message.setContent(multipart);
-
-            // Send message
-            javaMailSender.send(message);
-/*
             Transport.send(message);
-*/
-
             return identity;
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | IOException e) {
             throw new RuntimeException(e);
         }
 
-       /* MimeBodyPart attachPart = new MimeBodyPart();
-        try {
-            attachPart.setContent(file.getBytes(), file.getContentType());
-        } catch (MessagingException | IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            attachPart.setFileName(file.getOriginalFilename());
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        try {
-            attachPart.setDisposition(Part.ATTACHMENT);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("orduluwebform@ordulu.com");
-            messageHelper.setTo("ik@ordulu.com");
-            messageHelper.setSubject("subject");
-            messageHelper.setText(content, true);
-            messageHelper.addAttachment("fileName", (DataSource) attachPart);
-
-        };
-        try {
-            javaMailSender.send(mimeMessagePreparator);
-            return identity;
-        } catch (MailException e) {
-            throw e;
-        }*/
     }
 
     @PostMapping(value = "/sendinternappmail", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -186,8 +150,9 @@ public class MailController {
                                          @RequestParam String surname,
                                          @RequestParam String identity, @RequestParam String email, @RequestParam String phone
     ) throws IOException {
-        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+
         String host = "mail.ordulu.com";
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
         javaMailSender.setHost(host);
         javaMailSender.setPort(25);
         javaMailSender.setPassword("#zQWn33M");
@@ -195,9 +160,11 @@ public class MailController {
         Properties props = javaMailSender.getJavaMailProperties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", false);
-        props.put("mail.smtp.timeout", 1000);
+        props.put("mail.smtp.timeout", 20000);
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "25");
         String content = "<div><strong>Staj Başvurusu</strong><br/>" +
                 "<label>Kimden: " + name+ " "+ surname+"</label><br/>" +
                 "<label>TC Kimlik No: " +identity+"</label><br/>" +
@@ -205,7 +172,7 @@ public class MailController {
                 "<label>Telefon: " +phone+"</label><br/>" +
                 "</div>";
 
-        // Get the Session object.
+
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
@@ -214,83 +181,30 @@ public class MailController {
                 });
 
         try {
-            // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
             message.setFrom(new InternetAddress("orduluwebform@ordulu.com"));
-
-            // Set To: header field of the header.
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse("ik@ordulu.com"));
-
-            // Set Subject: header field
             message.setSubject("Staj Başvurusu");
-
-            // Create the message part
             BodyPart messageBodyPart = new MimeBodyPart();
-
-            // Now set the actual message
-            messageBodyPart.setText(content);
-
-            // Create a multipar message
+            messageBodyPart.setText("İş Başvurusu");
+            messageBodyPart.setContent(content,"text/html; charset=utf-8");
             Multipart multipart = new MimeMultipart();
-
-            // Set text message part
             multipart.addBodyPart(messageBodyPart);
-
-            // Part two is attachment
-            messageBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(file.getOriginalFilename());
-            messageBodyPart.setDataHandler(new DataHandler(source));
-            messageBodyPart.setFileName(file.getOriginalFilename());
-            multipart.addBodyPart(messageBodyPart);
-
-            // Send the complete message parts
+            MimeBodyPart attachment = new MimeBodyPart();
+            DataSource dataSrc = new ByteArrayDataSource(file.getBytes(), "application/pdf");
+            attachment.setDataHandler(new DataHandler(dataSrc));
+            attachment.setFileName(file.getOriginalFilename());
+            multipart.addBodyPart(attachment);
             message.setContent(multipart);
-
-            // Send message
-            javaMailSender.send(message);
-/*
             Transport.send(message);
-*/
-
             return identity;
 
-        } catch (MessagingException e) {
+        } catch (MessagingException | IOException e) {
             throw new RuntimeException(e);
         }
 
-       /* MimeBodyPart attachPart = new MimeBodyPart();
-        try {
-            attachPart.setContent(file.getBytes(), file.getContentType());
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        try {
-            attachPart.setFileName(file.getOriginalFilename());
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        try {
-            attachPart.setDisposition(Part.ATTACHMENT);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        MimeMessagePreparator mimeMessagePreparator = mimeMessage -> {
-            MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "UTF-8");
-            messageHelper.setFrom("orduluwebform@ordulu.com");
-            messageHelper.setTo("ik@ordulu.com");
-            messageHelper.setSubject("subject");
-            messageHelper.setText(content, true);
-            messageHelper.addAttachment("fileName", (DataSource) attachPart);
-        };
-        try {
-            javaMailSender.send(mimeMessagePreparator);
-            return identity;
-        } catch (MailException e) {
-            throw e;
-        }*/
+
     }
 
     @GetMapping("/map")

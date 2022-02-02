@@ -12,7 +12,8 @@ import {useTranslation, withTranslation} from 'react-i18next';
 import i18n from '../i18n/i18n';
 import AppNavbarStyle from "../Styles/AppNavbarStyle";
 import {Avatar, Button, Divider, Grid, Hidden, Link, Typography} from "@material-ui/core";
-import logo from '../assets/images/logo.png'
+import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo2.png';
 import DefaultTheme from "../Themes/DefaultTheme";
 import LanguagesEnum from "../i18n/LanguagesEnum";
 import MenuIcon from '@material-ui/icons/Menu';
@@ -164,7 +165,7 @@ function AppNavbar(props) {
                             </Typography>
                         </Link>
                     </MenuItem>
-                  {/*  <MenuItem onClick={handleCloseMobile}>
+                    {/*  <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
                             className={classes.tabStyle}
@@ -197,7 +198,7 @@ function AppNavbar(props) {
                             </Typography>
                         </Link>
                     </MenuItem>
-{/*
+                    {/*
                     <MenuItem onClick={handleCloseMobile}>
                         <Grid container>
                             <Grid item xs={12}>
@@ -243,12 +244,18 @@ function AppNavbar(props) {
             <AppBar position="fixed" color={"default"} className={classes.appBarMain}>
                 <Toolbar className={classes.toolBarMain}>
                     <Grid container>
-                        <Grid item lg={2} md={1} sm={2} xs={2} style={{margin: "auto"}} >
+                        <Grid item lg={2} md={1} sm={2} xs={2} style={{margin: "auto"}}>
                             <Link
                                 underline={"none"}
                                 href={'/'}
                             >
-                                <img src={logo} alt={""} width={"160px"} height={"45px"} className={classes.logoMargin}/>
+                                <Hidden only={"xs"}>
+                                    <img src={logo} alt={""} width={"160px"} height={"45px"}
+                                         className={classes.logoMargin}/>
+                                </Hidden>
+                                <Hidden smUp>
+                                    <Avatar className={classes.mainLogo} src={logo2}/>
+                                </Hidden>
                             </Link>
                         </Grid>
                         <Grid item lg={1} md={12} sm={1} xs={2} className={classes.emptyGrid3}/>
@@ -316,7 +323,7 @@ function AppNavbar(props) {
                                             </Typography>
                                         </Link>
                                     </Grid>
-                                   {/* <Grid item xs={2} style={{margin: "auto"}}>
+                                    {/* <Grid item xs={2} style={{margin: "auto"}}>
                                         <Link
                                             underline={"none"}
                                             className={classes.tabStyle}
@@ -351,7 +358,7 @@ function AppNavbar(props) {
                                             href={'/blog'}
                                         >
                                             <Typography
-                                                className={activeTab === "/blog" ? classNames(classes.tabFont2,classes.shortLink) : classNames(classes.tabFont,classes.shortLink)}>
+                                                className={activeTab === "/blog" ? classNames(classes.tabFont2, classes.shortLink) : classNames(classes.tabFont, classes.shortLink)}>
                                                 {t('Blog')}
                                             </Typography>
                                         </Link>
@@ -371,7 +378,7 @@ function AppNavbar(props) {
                                             href={'/contact'}
                                         >
                                             <Typography
-                                                className={activeTab === "/contact" ? classNames(classes.tabFont2,classes.shortLink) : classNames(classes.tabFont,classes.shortLink)}>
+                                                className={activeTab === "/contact" ? classNames(classes.tabFont2, classes.shortLink) : classNames(classes.tabFont, classes.shortLink)}>
                                                 {t('Contact')}
                                             </Typography>
                                         </Link>
@@ -383,7 +390,7 @@ function AppNavbar(props) {
                             </Hidden>
                         </Grid>
                         <Grid item lg={1} md={1} sm={12} xs={1} className={classes.emptyGrid}>
-{/*
+                            {/*
                             <Hidden smDown>
                                 <Grid container>
                                     <Grid item xs={3}>

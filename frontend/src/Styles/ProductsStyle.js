@@ -177,7 +177,7 @@ const ProductsStyle = makeStyles(theme => ({
 
     },
     carouselStyle: {
-        backgroundColor: "rgb(0 0 0 / 80%)"
+        backgroundColor: "rgb(0 0 0 / 80%) !important"
     },
     carouselGrid: {
         width: "100% !important",

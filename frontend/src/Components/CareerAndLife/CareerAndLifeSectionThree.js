@@ -105,7 +105,7 @@ function CareerAndLifeSectionThree() {
                 if (identity !== null && identity !== "") {
                     if (email !== null && email!== "") {
                         if (phone !== null && phone !== "") {
-                            if (cv !== null) {
+                            if (fileInput.current.files !== null && fileInput.current.files.length !== 0) {
                                 const formData = new FormData();
                                 formData.append(
                                     'file',
@@ -128,6 +128,11 @@ function CareerAndLifeSectionThree() {
                                         setAlert2("Başarılı!");
                                         setSeverity("success");
                                         setOpenForm(false);
+                                        setName(null);
+                                        setIdentity(null);
+                                        setSurname(null);
+                                        setPhone(null);
+                                        setEmail(null);
                                     })
                                     .catch(function (response) {
                                         setOpenAlert(false);
@@ -135,6 +140,11 @@ function CareerAndLifeSectionThree() {
                                         setAlert2("Bir hata oluştu!!");
                                         setSeverity("error");
                                         setOpenForm(false);
+                                        setName(null);
+                                        setIdentity(null);
+                                        setSurname(null);
+                                        setPhone(null);
+                                        setEmail(null);
                                     });
 
                             }

@@ -78,12 +78,12 @@ function AppFooter() {
                         </Typography>
                     </Button>
                 </Grid>
-                <Grid item sm={5} xs={12} className={classNames(classes.subGrids, classes.grid5)}>
+                <Grid item sm={6} xs={12} className={classNames(classes.subGrids, classes.grid5)}>
                     <Grid spacing={1} container
                           justifyContent="space-evenly"
                           alignItems="center"
                     >
-                        <Grid item md={2} sm={4} xs={12}>
+                        <Grid item md={2} sm={6} xs={12}>
                             <Link
                                 underline={"none"}
                                 href={'/contracts/infosecurity'}
@@ -93,7 +93,7 @@ function AppFooter() {
                                 </Typography>
                             </Link>
                         </Grid>
-                        <Grid item md={2} sm={4} xs={12}>
+                        <Grid item md={2} sm={6} xs={12}>
                             <Link
                                 underline={"none"}
                                 href={'/contracts/entegre'}
@@ -103,7 +103,7 @@ function AppFooter() {
                                 </Typography>
                             </Link>
                         </Grid>
-                        <Grid item md={2} sm={4} xs={12}>
+                        <Grid item md={2} sm={6} xs={12}>
                             <Link
                                 underline={"none"}
                                 href={'/contracts/contact'}
@@ -113,7 +113,7 @@ function AppFooter() {
                                 </Typography>
                             </Link>
                         </Grid>
-                        <Grid item md={2} sm={4} xs={12}>
+                        <Grid item md={2} sm={6} xs={12}>
                             <Link
                                 underline={"none"}
                                 href={'/contracts/press'}
@@ -123,7 +123,7 @@ function AppFooter() {
                                 </Typography>
                             </Link>
                         </Grid>
-                        <Grid item md={2} sm={4} xs={12}>
+                        <Grid item md={2} sm={6} xs={12}>
                             <Link
                                 underline={"none"}
                                 href={'/contracts/kvkk'}
@@ -135,11 +135,16 @@ function AppFooter() {
                         </Grid>
                     </Grid>
                 </Grid>
-                <Grid item sm={4} xs={12} className={classNames(classes.subGrids, classes.grid6)}>
+                <Grid item sm={3} xs={12} className={classNames(classes.subGrids, classes.grid6)}>
                     <Button disabled={true} startIcon={<HomeIcon style={{color: DefaultTheme.palette.inherit.main}}/>}>
-                        <Typography className={classes.mailTo}>
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: t('Address'),
+                            }}
+                            className={classes.mailTo}
+                        />                       {/* <Typography className={classes.mailTo}>
                             {t('Address')}
-                        </Typography>
+                        </Typography>*/}
                     </Button>
                 </Grid>
             </Grid>

@@ -74,6 +74,9 @@ const BlogStyle = makeStyles(theme => ({
             fontSize: "25px !important",
         },
     },
+    developerPadding: {
+      paddingTop: theme.spacing(4)
+    },
     questionTitle: {
         fontSize: "30px !important",
         color: DefaultTheme.palette.secondary.contrastText,
