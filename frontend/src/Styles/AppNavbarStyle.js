@@ -126,6 +126,12 @@ const AppNavbarStyle = makeStyles(theme => ({
         textDecoration: "none",
         textAlign: "center"
     },
+    tabStyle3: {
+        color: DefaultTheme.palette.success.contrastText,
+        textDecoration: "none",
+        textAlign: "left",
+        width: "100%"
+    },
     tabStyle2: {
         color: DefaultTheme.palette.secondary.main,
         textDecoration: "none",

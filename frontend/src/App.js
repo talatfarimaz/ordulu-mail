@@ -1,6 +1,6 @@
 import './App.css';
 import {ThemeProvider} from '@material-ui/core/styles';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Routes, Navigate } from 'react-router-dom';
 import DefaultTheme from "./Themes/DefaultTheme";
 import Home from "./Components/Home";
 import AppNavbar from "./Components/AppNavbar";
@@ -13,6 +13,8 @@ import Products from "./Components/Products";
 import Jobs from "./Components/Jobs";
 import About from "./Components/About";
 import ScrollButton from "./Components/ScrollButton";
+import {Navigation} from "@material-ui/icons";
+import {MissingRoute} from "./Components/MissingRoute";
 
 const theme = DefaultTheme;
 
@@ -30,6 +32,7 @@ function App() {
                     <Route path='/products' element={<Products/>}/>
                     <Route path='/jobs' element={<Jobs/>}/>
                     <Route path='/about' element={<About/>}/>
+                    <Route path="*" element={<MissingRoute/>} />
                 </Routes>
             </Router>
             <ScrollButton/>

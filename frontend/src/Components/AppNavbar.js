@@ -135,7 +135,7 @@ function AppNavbar(props) {
                     <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
-                            className={classes.tabStyle}
+                            className={classes.tabStyle3}
                             href={'/'}
                         >
                             <Typography className={classes.menuItem}>
@@ -146,7 +146,7 @@ function AppNavbar(props) {
                     <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
-                            className={classes.tabStyle}
+                            className={classes.tabStyle3}
                             href={'/careerandlife'}
                         >
                             <Typography className={classes.menuItem}>
@@ -157,7 +157,7 @@ function AppNavbar(props) {
                     <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
-                            className={classes.tabStyle}
+                            className={classes.tabStyle3}
                             href={'/about'}
                         >
                             <Typography className={classes.menuItem}>
@@ -179,7 +179,7 @@ function AppNavbar(props) {
                     <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
-                            className={classes.tabStyle}
+                            className={classes.tabStyle3}
                             href={'/blog'}
                         >
                             <Typography className={classes.menuItem}>
@@ -190,7 +190,7 @@ function AppNavbar(props) {
                     <MenuItem onClick={handleCloseMobile}>
                         <Link
                             underline={"none"}
-                            className={classes.tabStyle}
+                            className={classes.tabStyle3}
                             href={'/contact'}
                         >
                             <Typography className={classes.menuItem}>
